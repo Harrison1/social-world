@@ -59,9 +59,7 @@ fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
                             type: 'POST',   
                             data: formData,
                             processData: false,
-                            contentType: false }).done(function (msg) {
-                                                                        alert("Data Saved: " + msg);
-                                                                      });   
+                            contentType: false }).done(function (msg) { alert("Data Saved: " + msg);});   
                     $scope.user.profilepicsave = $scope.master.profilepic;
                     $scope.master = angular.copy(user);
                 };
@@ -73,9 +71,7 @@ fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
                             type: 'POST',   
                             data: formDataC,
                             processData: false,
-                            contentType: false }).done(function (msg) {
-                                                                        alert("Data Saved: " + msg);
-                                                                      });   
+                            contentType: false }).done(function (msg) { alert("Data Saved: " + msg);});   
                     $scope.user.coverpicsave = $scope.master.coverpic;
                     $scope.master = angular.copy(user);
                     $('#covermodal').closeModal();

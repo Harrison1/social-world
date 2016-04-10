@@ -78,7 +78,7 @@
    if($count == 1) {
       $_SESSION['login_user'] = $email;
       
-      header("location: ../profilepagejsontest.php");
+      header("location: ../profilepage.php");
       
    }else {
       $error = "Your Login Name or Password is invalid";

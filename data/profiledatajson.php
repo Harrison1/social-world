@@ -1,10 +1,10 @@
 <?php
-  session_start();
-  require_once('../connectdb/establishconnection.php');
+  
+  include '../core/main.php';
 
   $myusername = $_SESSION['login_user'];
 
-  $query = "SELECT users.firstname, users.lastname, personalInfo.gender, personalInfo.birthday, personalInfo.birthmonth, personalInfo.birthyear, personalInfo.city, personalInfo.state, personalInfo.aboutme, personalInfo.profilepicpath, personalInfo.profilepic, personalInfo.profilepicsave, personalInfo.profilepicdefault, personalInfo.coverpicpath, personalInfo.coverpic, personalInfo.coverpicsave, personalInfo.coverpicdefault FROM users, personalInfo WHERE users.username= '$myusername' AND personalInfo.username= '$myusername'";
+  $query = "SELECT * FROM users, personalInfo WHERE users.username= '$myusername' AND personalInfo.username= '$myusername'";
 
   $response = @mysqli_query($dbc, $query);
 
