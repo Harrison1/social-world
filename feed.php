@@ -57,10 +57,8 @@
       <main>
       <!-- navbar -->
       <?php include('navbar.html'); ?>
+      
 
-<?php
-   include('session.php');
-?>
 <?php {?>
 
 	<div class="wrapper">		
