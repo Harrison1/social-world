@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body style="background-color: #f5f8fa;" ng-app="socialworldapp" ng-controller="ProfileController" ng-cloak>
+
+      <nav class="light-blue darken-1">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Social World</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="sass.html">Feed</a></li>
+              <li><a href="badges.html">Profile</a></li>
+              <li><a href="collapsible.html">My Posts</a></li>
+              <li><a href="mobile.html">Logout</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="sass.html">Feed</a></li>
+              <li><a href="badges.html">Profile</a></li>
+              <li><a href="collapsible.html">My Posts</a></li>
+              <li><a href="mobile.html">Logout</a></li>
+            </ul>
+          </div>
+          </div>
+      </nav>
+
+    <div class="parallax-container" style="width: 100%; height: 200px; position: absolute; z-index: -100;">
+      <div id="coverimage" class="parallax"><img ng-src="{{master.coverpic}}"></div>
+      <div class="grad" style="height: 50px; width: 100%; margin-top: 150px"></div>
+    </div>
+
+      <div class="container">
+        <h1 class="emblem">{{ master.first_name | limitTo : 1 }}</h1>
+          <div class="row">
+              <div class="col s12 m3 profile-image-row">
+                <div class="card small profile-card-small">
+                  <div id="profile-pic-div" class="card-image profile-card-image">
+                    <img id="profile-pic" ng-src="{{master.profilepic}}">
+                    <i class="card-title activator material-icons right waves-effect waves-light">photo_camera</i>
+                  </div>
+
+                  <div class="card-reveal reveal-style">
+                    <span class="card-title"><i class="material-icons right">close</i></span>
+                    <span class="card-title">Update Profile Picture</span>
+                      <form name="profilePicForm" novalidate>
+                          <div class="file-field input-field">
+                            <div class="btn light-blue darken-1 profile-upload-btn">
+                              <span><i class="material-icons left profile-upload-btn-icon">photo</i></span>
+                              <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="Upload Picture" ng-model="user.profilepic" required>
+                            </div>
+                          </div>
+                        </form>
+                        <button type="submit" ng-click="updatePPic(user)" ng-disabled="profilePicForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m7">
+
+                <div id="profile-info" class="pofile-format">
+
+                  <h3 class="truncate profile-name">{{master.first_name + ' ' + master.last_name}}</h3>
+                  <h5>{{master.gender}}</h5>
+                  <h5>{{master.age}}</h5>
+                  <h5>{{master.birthday}}</h5>
+                  <h5>{{master.city}}, {{master.state}}</h5>
+                  <h5>About Me</h5>
+                  <h6>{{master.aboutme}}</h6>
+   
+                  <!-- Modal Trigger -->
+                  <a id="profile-info-edit" href="#profilemodal" class="waves-effect waves-circle waves-light btn right white modal-trigger profile-edit-format" style="padding: 0; width: 1.5em; height: 1.5em; line-height: 1.2em; bottom: 5px; right: 5px; position: absolute;"><i class="material-icons left" style="color: #039be5; margin-right: 0; margin-left: 2px; margin-top: 1px; font-size: 1rem;">mode_edit</i></a>
+            
+                </div>
+    
+              </div>
+
+              <div class="col s12 m2">
+              <a href="#covermodal" class="right modal-trigger"><i id="coverimage-edit" class="material-icons right" style="color: white; margin-top: 40px;">panorama</i></a>
+              <div class="row margin-left-1em">
+                <h4 class="chat-margin">Alerts</h4>
+              </div>
+                <div class="row not-row truncate" style="overflow-x: hidden;">
+                  <i class="material-icons left not-bar">notifications</i>Notifications
+                </div>  
+                <div class="row not-row truncate" style="overflow-x: hidden;">
+                  <i class="material-icons left not-bar">person_add</i>Add a Friend
+                </div>  
+                <div class="row not-row truncate" style="overflow-x: hidden;">
+                  <i class="material-icons left not-bar">inbox</i>Inbox
+                </div> 
+                <div class="row not-row truncate" style="overflow-x: hidden;">
+                  <i class="material-icons left not-bar">public</i>Public
+                </div> 
+              </div>
+
+            </div>  
+
+          <div>
+              <h3>Friends</h3>
+              <div class="row">
+                <div class="col s12">
+                  <div ng-repeat="friend in friends" class="chip">
+                    <img ng-src="{{friend.profilepic}}" alt="Contact Person" style="width: 82px; height: 82px; border-radius: 20% 0 0 20%;">
+                    <p style="float: left; color: white;">{{friend.first_name}}</p>
+                  </div>
+                </div>
+              </div>    
+          </div>
+
+<!-- Modal Structure -->
+<div id="profilemodal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Edit Your Profile</h4>
+      <div class="row">
+        <form class="col s12" name="profileForm" novalidate>
+          <div class="row">
+            <div class="col s6">
+              <h4>Name</h4>
+              </div>
+            </div>  
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">portrait</i>
+                <input type="text" name="first_name" length="20" class="validate" ng-model="user.first_name" ng-minlength="1" ng-maxlength="20" required />
+                <label for="first_name" data-error="needs to be less than 20 characters">First Name</label>
+                <p class="required-field" ng-show="profileForm.first_name.$error.required">required</p>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_box</i>
+                <input type="text" name="last_name" length="20" class="validate" ng-model="user.last_name" ng-maxlength="20" required />
+                <label for="last_name" data-error="needs to be less than 20 characters">Last Name</label>
+                <p class="required-field" ng-show="profileForm.last_name.$error.required">required</p>
+              </div>
+            </div>
+              <div class="row">
+                <div class="col s6">
+                  <h4>Gender</h4>
+                </div>
+                <div class="col s6">
+                  <h4>Birthdate</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s3">
+                  <p>
+                    <input class="with-gap" type="radio" name="group2" id="genderf" value="Female" ng-model="user.gender" />
+                    <label for="genderf">Female</label>
+                  </p>
+                </div>
+                <div class="col s3">
+                  <p>
+                    <input class="with-gap" type="radio" name="group2" id="genderm" value="Male" ng-model="user.gender"/>
+                    <label for="genderm">Male</label>
+                  </p>
+                </div>
+                <!-- <div class="col s1">
+                  <i class="material-icons">cake</i>
+                </div>
+                <div class="col s5" style="padding-left: 0; margin-top: -10px;">
+                  <label for="birthdate">Birthdate</label>
+                  <input type="date" id="datepicker" name="birthday" class="datepicker" class="validate" format="dd/mm/yyyy" required />
+                  <p class="required-field" ng-show="profileForm.birthday.$error.required">required</p>
+                </div> -->
+              <div class="col s2">
+                <label>Day</label>
+                <select class="browser-default" ng-model="user.day" ng-options="day for day in days" required></select>
+              </div>
+              <div class="col s2">
+                <label>Month</label>
+                <select class="browser-default" ng-model="user.month" ng-options="month for month in months" required></select>
+              </div>
+              <div class="col s2">
+                <label>Year</label>
+                <select class="browser-default" ng-model="user.year" ng-options="year for year in years" required></select>
+              </div>
+
+              </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">place</i>
+                <input type="text" name="city" class="validate" length="20" ng-model="user.city" ng-maxlength="20" required />
+                <label for="city" data-error="needs to be less than 20 characters">City</label>
+                <p class="required-field" ng-show="profileForm.city.$error.required">required</p>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">terrain</i>
+                <input type="text" name="state" class="validate" length="2" ng-model="user.state" ng-maxlength="2" required />
+                <label for="state" data-error="state should be 2 letters">State</label>
+                <p class="required-field" ng-show="profileForm.state.$error.required">required</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <h4>Tell Us About Yourself</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">sentiment_very_satisfied</i>
+                <textarea id="aboutme" name="aboutme" class="materialize-textarea" length="100" ng-model="user.aboutme" ng-maxlength="100" required></textarea>
+                <label for="aboutme" data-error="needs to be less than 100 characters">A Sentence About Yourself</label>
+                <p class="required-field" ng-show="profileForm.aboutme.$error.required">required</p>
+              </div>
+            </div>
+              
+        </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+<!--   <input type="submit" ng-click="update(user)" value="Save" /> -->
+    <button class="modal-action modal-close waves-effect waves-circle waves-light btn red accent-4" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 20px;"><i class="material-icons left">close</i></button>
+    <button type="submit" ng-click="update(user)" ng-disabled="profileForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
+  </div>
+</div><!-- modal structure -->
+
+<!-- Modal Structure -->
+<div id="covermodal" class="modal modal-fixed-footer" style="overflow:hidden; width:400px; height:400px;">
+  <div class="modal-content" style="overflow:hidden;">
+    <h4>Change Your Cover Photo</h4>
+      <div class="row">
+        <form name="coverPicForm" novalidate>
+          <div class="file-field input-field">
+            <div class="btn light-blue darken-1 profile-upload-btn">
+              <span><i class="material-icons left profile-upload-btn-icon">panorama</i></span>
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload Picture" ng-model="user.coverpic">
+            </div>
+          </div>
+        </form>
+      </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-circle waves-light btn red accent-4" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">close</i></a>
+<button type="submit" ng-click="updateCPic(user)" ng-disabled="coverPicForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
+  </div>
+</div>
+</div><!-- modal structure -->
+
+ </div><!-- end of body container -->
+
+
+        <footer class="page-footer blue-grey darken-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Social World</h5>
+                <p class="grey-text text-lighten-4">A social platform to be yourself</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Nav</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Feed</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Profile</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">My Posts</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+              &copy; 2016 Copyright Social World
+            </div>
+          </div>
+        </footer>
+
+
+
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="js/main.js"></script>
+      <script src="js/controllers/profilecontroller.js"></script>
+
+   
+    </body>
+  </html>
+

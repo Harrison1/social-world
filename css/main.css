@@ -1,0 +1,279 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.side-nav {
+  background-color: #fff;
+}
+
+.side-nav li {
+  border-bottom: 1px solid black;
+}
+
+.side-nav a {
+  color: #424242;
+}
+
+nav ul a:hover {
+  background-color: #80d8ff;
+}
+
+.side-nav li:hover {
+  background-color: #80d8ff;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #039be5;
+  box-shadow: 0 1px 0 0 #039be5;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #039be5;
+}
+
+.input-field .prefix.active {
+  color: #039be5;
+}
+
+.picker__date-display {
+  text-align: center;
+  background-color: #039be5;
+
+}
+
+.picker__weekday-display {
+  background-color: #0288d1;
+}   
+
+.picker__day.picker__day--today {
+  color: #039be5;
+}
+
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+  background-color: #039be5;
+}
+
+.picker__close, .picker__today {
+  color: #039be5;
+}
+
+.picker__nav--prev:hover, .picker__nav--next:hover {
+  background: #b3e5fc;
+}
+
+button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
+  background-color: #b3e5fc;
+}
+
+[type="radio"].with-gap:checked+label:before {
+  border: 2px solid #039be5;
+}
+
+[type="radio"].with-gap:checked+label:after {
+  border: 2px solid #039be5;
+  background-color: #039be5;
+}
+
+.chip {
+  margin: 20px 20px 20px 0;
+  height: 82px; 
+  border-radius: 16px; 
+  font-size: 23px; 
+  background-color: #039be5;"
+}
+
+.pofile-format {
+  height: 276px; 
+  overflow-y: auto; 
+  padding: 0 10px 10px 20px;
+  margin-top: 24px;
+  position: relative;
+}
+
+.profile-edit-format {
+  width: 30px; 
+  border-radius: 50%; 
+  padding-left: 8px; 
+  margin-top: 8px;  
+  border: 1px solid #039be5;
+}
+
+.profile-image-row {
+  margin-bottom: 0; 
+  margin-top: 0;
+}
+
+.profile-card-small {
+  max-width: 300px; 
+  margin-bottom: 0; 
+  margin-top: 0;
+}
+
+.card.small .card-image, .card.medium .card-image, .card.large .card-image {
+  max-height: 100%; 
+  height: 100%;
+}
+
+.card .card-image img {
+  width: 300px; 
+  height: 300px;
+}
+ 
+.card .card-image .card-title {
+  right: 10px; 
+  bottom: 10px; 
+  left: initial; 
+  padding: 0;
+}
+
+.card .card-reveal {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white; 
+}
+
+.card.card-reveal.reveal-style {
+  border-radius: 5%;
+}
+
+.card.small.profile-card-small {
+  border: 4px solid white;
+  border-radius: 5%;
+  z-index: 50;
+}
+
+.card.small .card-image.profile-card-image {
+  border-radius: 5%;
+}
+
+.profile-upload-btn {
+  border-radius: 50%; 
+  padding-left: 14px; 
+  padding-right: 0px;
+  cursor: pointer;
+}
+
+.profile-upload-btn-icon {
+   cursor: pointer;
+}
+
+.grad {
+    background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0.8)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0.8)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0.8)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0.8)); /* Standard syntax */
+}
+
+.profile-name {
+  margin-top: 0; 
+  color: white;
+}  
+
+.chat-margin {
+ margin: 80px 0 0 0;
+}
+
+.container .row .margin-left-1em {
+ margin-left: 1em;
+}
+
+.container .row .not-row {
+  margin-left: 1em; 
+  height: 100%; 
+  overflow: auto;
+}
+
+.material-icons .left .not-bar {
+  font-size: 28px;
+}
+
+.input-error {
+  display: inline; 
+  padding: 5px; 
+  color: white;
+  margin-left: 40px;
+}
+
+.input-field .prefix ~ label {
+  width: 100%;
+}
+
+.emblem {
+  color: white;
+  display: inline-block;
+  border: 4px solid white;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  height: 100px;
+  margin-top: 10px;
+  padding-top: 12px;
+  width: 100px;
+  text-align: center;
+}
+
+.required-field {
+  margin-left: 3rem; 
+  width: 100%; 
+  font-size: 0.8rem; 
+  margin-top: 0; 
+  margin-bottom: 0; 
+  color: #F44336;
+}
+
+.datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ 
+}
+
+.datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; 
+}
+
+.datepickerdemoBasicUsage .validation-messages {
+    font-size: 11px;
+    color: darkred;
+    margin: 10px 0 0 25px; 
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .profile-name {
+    color: rgba(0,0,0,0.87);
+  }
+  .pofile-format {
+    margin-top: 36px;
+    padding: 0;
+  }
+
+.chat-margin {
+    margin: 0 0 0 0;
+  }
+}
