@@ -11,6 +11,6 @@
    $login_session = $row['username'];
    
    if(!isset($_SESSION['login_user'])){
-      header("location:material-login-form/login.php");
+      header("location:login/login.php");
    }
 ?>
