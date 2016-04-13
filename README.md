@@ -6,3 +6,7 @@ Andy Tran - http://andytran.me
 
 credit for code used in the news feed goes to:
 Aizaz Ud Din (Aizaz.dinho) - Made By: Meralesson.com
+
+![Alt text](/siteimages/socialworldprofilepage.png)
+
+![Alt text](/siteimages/socialworldfee.png)
