@@ -1,5 +1,5 @@
 <?php
-   include('session.php');
+   include 'main.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
       <?php include('navbar.html'); ?>
 
     <div class="parallax-container" style="width: 100%; height: 200px; position: absolute; z-index: -100;">
-      <div id="coverimage" class="parallax"><img ng-src="{{master.coverpicpath}}{{master.coverpic}}" err-src="{{master.coverpicpath}}{{master.coverpicsave}}" derr-src ="{{master.coverpicdefault}}"></div>
+      <div id="coverimage" class="parallax"><img ng-src="{{master.coverpic}}" err-src="{{master.coverpicpath}}{{master.coverpicsave}}" derr-src ="{{master.coverpicdefault}}"></div>
       <div class="grad" style="height: 50px; width: 100%; margin-top: 150px"></div>
     </div>
 
@@ -30,25 +30,25 @@
               <div class="col s12 m3 profile-image-row">
                 <div class="card small profile-card-small">
                   <div id="profile-pic-div" class="card-image profile-card-image">
-                    <img id="profile-pic" ng-src="{{master.profilepicpath}}{{master.profilepic}}" err-src="{{master.profilepicpath}}{{master.profilepicsave}}" derr-src ="{{master.profilepicdefault}}">
+                    <img id="profile-pic" ng-src="{{master.profilepic}}" err-src="{{master.profilepicpath}}{{master.profilepicsave}}" derr-src ="{{master.profilepicdefault}}">
                     <i class="card-title activator material-icons right waves-effect waves-light">photo_camera</i>
                   </div>
 
                   <div class="card-reveal reveal-style">
                     <span class="card-title"><i class="material-icons right">close</i></span>
                     <span class="card-title">Update Profile Picture</span>
-                      <form id="uploadProfilePic" name="profilePicForm" method="post" enctype="multipart/form-data" novalidate>
+                      <form action="data/ppicchanged.php" id="uploadProfilePic" name="profilePicForm" method="POST" enctype="multipart/form-data" novalidate>
                           <div class="file-field input-field">
                             <div class="btn light-blue darken-1 profile-upload-btn">
                               <span><i class="material-icons left profile-upload-btn-icon">photo</i></span>
-                              <input type="file" name="fileToUpload" id="fileToUpload">
+                              <input type="file" name="profile_image" id="profile_image">
                             </div>
                             <div class="file-path-wrapper">
                               <input class="file-path validate" type="text" placeholder="Upload Picture" ng-model="user.profilepic" required>
                             </div>
                           </div>
-                          <button type="submit" ng-click="updatePPic(user)" ng-disabled="profilePicForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
-                        </form>
+                          <button type="submit" name="submit" ng-disabled="profilePicForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
+                      </form>
                   </div>
                 </div>
               </div>
@@ -90,36 +90,6 @@
 
             </div>  
 
-
-<!--        <div class="row">
-        <form action="data/pchanged.php" method="post" class="col s12" name="newForm" novalidate>
-          <div class="row">
-            <div class="col s6">
-              <h4>Name</h4>
-              </div>
-            </div>  
-            <div class="row">
-              <div class="input-field col s6">
-                <i class="material-icons prefix">portrait</i>
-                <input type="text" name="first_name" length="20" class="validate" ng-model="user.first_name" ng-minlength="1" ng-maxlength="20" required />
-                <label class="active" for="first_name" data-error="needs to be less than 20 characters">First Name</label>
-                <p class="required-field" ng-show="newForm.first_name.$error.required">required</p>
-              </div>
-              <div class="input-field col s6">
-                <i class="material-icons prefix">account_box</i>
-                <input type="text" name="last_name" length="20" class="validate" ng-model="user.last_name" ng-maxlength="20" required />
-                <label class="active" for="last_name" data-error="needs to be less than 20 characters">Last Name</label>
-                <p class="required-field" ng-show="newForm.last_name.$error.required">required</p>
-              </div>
-            </div> 
-
-            <button ng-click="reset()" class="modal-action modal-close waves-effect waves-circle waves-light btn red accent-4" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 20px;"><i class="material-icons left">close</i></button>
-            <button type="submit" name="submit" ng-click="update(user)" ng-disabled="newForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
-
-            </form>
-
-        </div>   --> 
-
           <div>
               <h3>Friends</h3>
               <div class="row">
@@ -145,6 +115,8 @@
 
       <!-- included scripts -->
       <?php include('includedscripts.html'); ?>
+
+            </script>
 
   </body>
 

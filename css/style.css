@@ -1,15 +1,10 @@
 	/* Author: Meezan Ud Din */
 	/* Made By: Meralesson.com*/
+	/* Edits By: Harrison McGuire */
 
-*{
-	margin:0px;
-	padding:0px;
-	width:auto;
-	height:auto;
-	font-family:helvetica,arial,sans-serif;
-	
+form {
+	margin: 0px;
 }
-
 
 body{
 	background-color:#E9EAED;
@@ -34,13 +29,7 @@ body{
 	color: white;
  	font-size: 44px;
 }
-.right{
-	float:right;
-	width:430px;
-	height:auto;
-	margin: 10px 0px;
-	font-size:13px;
-	}
+
 .right ul{
 	list-style:none;
 }
@@ -58,14 +47,48 @@ body{
 .right-pass{
 	float:left;
 }
+
 .btn{
-    margin: 25px 1px;
-	padding:0px;
-	border:none;
-	background:#8fc400;
-	color:white;
-	border: 1px solid rgb(40, 77, 39);
-	padding: 2px 3px;
+    margin: 12px;
+    padding: 0px;
+    border: none;
+    background: #039be5;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.btnp, .btnp-large {
+    text-decoration: none;
+    color: #fff;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+
+.btnp, .btnp-large, .btnp-flat {
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btnp{
+    margin: 12px;
+    padding: 0px;
+    border: none;
+    background: #039be5;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 10px;
 }
 
 .right-btn{
@@ -133,11 +156,12 @@ line-height: 6;}
 
 .c-h-inner{
 	width:95%;
-	height:25px;
+	height:35px;
 	margin:0px 15px;
 	border-bottom:1px solid #E5E5E5;
 	font-size:12px;
 	font-weight:bold;
+	background-color: #039be5;
 }
 
 .c-h-inner ul{
@@ -171,6 +195,7 @@ line-height: 6;}
 	border-top: 1px solid #8fc400;
 	margin: 10px;
 	display: none;
+	text-align: left;
 }
 #body-bottom img{
 	margin: 10px;
@@ -227,7 +252,6 @@ line-height: 6;}
 
 .right-box ul {
 	list-style:none;
-	
 }
 
 .right-box ul li{
@@ -272,6 +296,10 @@ line-height: 6;}
 
 .btn1:hoveR{
 	cursor:pointer;
+}
+
+.post-body{
+	text-align: left;
 }
 
 .post-show{
@@ -343,7 +371,10 @@ line-height: 6;}
 	height:auto;
 }
 
-.post-left-box ul{list-style:none;}
+.post-left-box ul{
+	list-style:none;
+	text-align: left;
+}
 
 .post-left-box ul li{
 	display:block;
@@ -392,4 +423,11 @@ line-height: 6;}
 .post-footer a{text-decoration:none; font-size:13px; color:#3F66B7;}
 .post-footer a:hover{text-decoration:underline;}
 
+.btnp:hover, .btnp-large:hover {
+    background-color: #00e676;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #e040fb;
+}
 

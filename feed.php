@@ -1,7 +1,8 @@
 <?php 
 	/* Author: Aizaz Ud Din (Aizaz.dinho)*/
 	/* Made By: Meralesson.com*/
-	include 'core/main.php';
+	/* Edits By: Harrison McGuire*/
+	include 'main.php';
 	$check  = new Main;
 	$get    = new Main;
 	$send   = new Main;
@@ -43,23 +44,22 @@
 
 	}
 ?>
+
 <html>
 	<head>
 		<title>Social World News Feed</title>
 		<?php include('headincludefiles.html'); ?>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 	  <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	</head>
 
-<body style="background-color: #f5f8fa;" ng-app="fetch" ng-controller="dbCtrl" ng-cloak>
+<body style="background-color: #f5f8fa;" >
       <main>
       <!-- navbar -->
       <?php include('navbar.html'); ?>
-      
-
-<?php {?>
 
 	<div class="wrapper">		
 		<!--content -->
@@ -72,12 +72,7 @@
  					<form action="" method="post" enctype="multipart/form-data">
 						<div class="c-header">
 							<div class="c-h-inner">
-								<ul>	
-									<li style="border-right:none;"><img src="img/icon3.png"></img><a href="#">Update Status</a></li>
-									<li><input type="file"  onchange="readURL(this);" style="display:none;" name="post_image" id="uploadFile"></li>
-									<li><img src="img/icon1.png"></img><a href="#" id="uploadTrigger" name="post_image">Add Photos/Video</a></li>
-									<li style="border: none;"><img src="img/icon2.png"></img><a href="#">Create Photo Album</a></li>
-								</ul>
+							<p style="text-align: center; color: #fff; font-size: 22px; margin: 0;">Post Something New</p>
 							</div>
 						</div>
 						<div class="c-body">
@@ -94,35 +89,15 @@
 							</div>
 						</div>
 						<div class="c-footer">
+							<input type="file"  onchange="readURL(this);" style="display:none;" name="post_image" id="uploadFile">
+							<a href="#" id="uploadTrigger" name="post_image" class="waves-effect waves-light btn" style="right: 120px;"><i class="material-icons left">panorama</i>add photo</a>
 							<div class="right-box">
-								<ul>
-									<li><button class="btn1"><img class="iconw-margin" src="img/iconw.png"></img>Public<img class="iconp-margin" src="img/iconp.png"></img></button></li>
-									<li><input type="submit" name="submit" value="Post" class="btn2"/></li>
-								</ul>
+									<input type="submit" name="submit" value="Post" class="waves-effect waves-light btnp" />
 							</div>
 								
 							</div>
 						</div>
 						</div>
-						<script type="text/javascript">
-						 //Image Preview Function
-								$("#uploadTrigger").click(function(){
-								   $("#uploadFile").click();
-								});
-						        function readURL(input) {
-						            if (input.files && input.files[0]) {
-						                var reader = new FileReader();
-
-						                reader.onload = function (e) {
-						                	$('#body-bottom').show();
-						                    $('#preview').attr('src', e.target.result);
-						                }
-
-						                reader.readAsDataURL(input.files[0]);
-						            }
-						        }
-
-						</script>
 					
 						<?php foreach($post as $row){
 							//fetching all posts
@@ -135,7 +110,7 @@
 												<div class="id-img-box"><img src="'.$row['profilepic'].'"></img></div>
 												<div class="id-name">
 													<ul>
-														<li><a href="#">'.$row['username'].'</a></li>
+														<li><a href="#">'.$row['first_name'].'</a></li>
 														<li><small>'.$get->timeAgo($time_ago).'</small></li>
 													</ul>
 												</div>
@@ -152,8 +127,6 @@
 												<div class="post-footer-inner">
 													<ul>
 														<li><a href="#">Like</a></li>
-														<li><a href="#">Comment</a></li>
-														<li><a href="#">Share</a></li>
 													</ul>	
 												</div>
 											</div>
@@ -171,7 +144,6 @@
  
 
 </div>
-<?php }?>
 
 </main>
       <!-- footer -->
@@ -179,5 +151,25 @@
 
       <!-- included scripts -->
       <?php include('includedscripts.html'); ?>
+
+<script type="text/javascript">
+ //Image Preview Function
+	$("#uploadTrigger").click(function(){
+	   $("#uploadFile").click();
+	});
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                	$('#body-bottom').show();
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+</script>
 </body>
 </html>

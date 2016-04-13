@@ -1,12 +1,11 @@
 fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
 
-
             $http.get("../../data/profiledatajson.php").success(function(data) {
             	$scope.uploadSuccess = false;
                 $scope.data = data;
                   $scope.master = {
-                                    first_name: data[0].firstname,
-                                    last_name: data[0].lastname,
+                                    first_name: data[0].first_name,
+                                    last_name: data[0].last_name,
                                     profilepicpath: data[0].profilepicpath,
                                     profilepic: data[0].profilepic,
                                     profilepicsave: data[0].profilepicsave,
@@ -29,6 +28,9 @@ fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
 
                 $scope.update = function(user) {
                    $scope.master = angular.copy(user);
+                   
+
+                   
                    $scope.master.age = calculate_age($scope.master.birthmonth,$scope.master.birthday,$scope.master.birthyear);
                    var data = {
                                 'fnamekey': $scope.master.first_name, 

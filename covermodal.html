@@ -3,22 +3,22 @@
   <div class="modal-content" style="overflow:hidden;">
     <h4>Change Your Cover Photo</h4>
       <div class="row">
-        <form id="uploadCoverPic" name="coverPicForm" method="post" enctype="multipart/form-data" novalidate>
+        <form action="data/cpicchanged.php" id="uploadCoverPic" name="coverPicForm" method="POST" enctype="multipart/form-data" novalidate>
           <div class="file-field input-field">
             <div class="btn light-blue darken-1 profile-upload-btn">
               <span><i class="material-icons left profile-upload-btn-icon">panorama</i></span>
-              <input type="file" name="fileToUploadC" id="fileToUploadC">
+              <input type="file" name="cover_image" id="cover_image">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" placeholder="Upload Picture" ng-model="user.coverpic" required>
             </div>
           </div>
+          <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-circle waves-light btn red accent-4" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">close</i></a>
+            <button type="submit" name="submit" ng-disabled="coverPicForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
+          </div>
         </form>
       </div>
-  <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-circle waves-light btn red accent-4" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">close</i></a>
-<button type="submit" ng-click="updateCPic(user)" ng-disabled="coverPicForm.$invalid" class="modal-action waves-effect waves-circle waves-light btn teal accent-3" style="width: 30px; border-radius: 50%; padding-left: 8px; margin-right: 30px;"><i class="material-icons left">done</i></button>
   </div>
-</div>
 </div>
 <!-- modal structure -->

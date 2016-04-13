@@ -1,23 +1,22 @@
 <?php
-  
-  include '../core/main.php';
+  include '../main.php';
 
-  $myusername = $_SESSION['login_user'];
+  $user_id = $_SESSION['user_id'];
 
-  $query = "SELECT * FROM users, personalInfo WHERE users.username= '$myusername' AND personalInfo.username= '$myusername'";
+  profileData($user_id);
 
-  $response = @mysqli_query($dbc, $query);
+  function profileData($id) {
+        global $dbh;
+        $query = $dbh->prepare("SELECT * FROM personalInfo WHERE personalInfo.userID= ?");
+        $query->bindvalue(1,$id);
+        $query->execute();
 
-  $data = array();
+        $results=$query->fetchAll(PDO::FETCH_ASSOC);
 
-  while ($row = mysqli_fetch_assoc($response)) {
-  	$data[] = $row;
+        print json_encode($results);
+
+        $dbh = null;
   }
-    
-  print json_encode($data);
-
-  mysqli_close($dbc);
-
 
 ?>
 

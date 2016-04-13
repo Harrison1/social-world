@@ -2,7 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Material Login Form</title>
+    <title>Social World</title>
     
     
     <link rel="stylesheet" href="css/reset.css">
@@ -65,7 +65,7 @@
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button><span>Next</span></button>
+        <button type="submit" name="signup" ><span>Sign Up</span></button>
       </div>
     </form>
   </div>

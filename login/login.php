@@ -1,4 +1,6 @@
 <?php 
+	include '../main.php';
+
 	$check = new Main;
 	if(isset($_POST['username'],$_POST['password'])) {
 		@$username = $_POST['username'];
@@ -9,6 +11,6 @@
 		} else {
 			//$password = md5($password);
   			$check->login($username,$password);
-			}
+		}
 	}
 ?>

@@ -1,60 +1,35 @@
 <?php
-    session_start();
-	require_once('../connectdb/establishconnection.php');
+    include '../main.php';
 
+    $user_id = $_SESSION['user_id'];
 
-	//if(isset($_POST['submit'])) {
+    profile_change($user_id);
 
-		//$data = json_decode(file_get_contents("php://input"));
-		$myusername = $_SESSION['login_user'];
-		$postdata = file_get_contents("php://input");
-		$request = json_decode($postdata);
-		
-		$f_name = $request->fnamekey;
-		$l_name = $request->lnamekey;
-		$gender = $request->genkey;
-		$b_day = $request->bdaykey;
-		$b_month = $request->bmonthkey;
-		$b_year = $request->byearkey;
-		$city = $request->citykey;
-		$state = $request->statekey;
-		$about = $request->aboutkey;
+	function profile_change($user_id) {
 
-
-		//$f_name = $data->fkey;
-		//$l_name = $data->lkey;
-
-		 //$f_name = mysql_real_escape_string($data->fkey);
-		 //$l_name = mysql_real_escape_string($data->lkey);
-
-			//$f_name = $_POST['first_name'];
-			//$l_name = $_POST['last_name'];
-
-			$query = "UPDATE users, personalInfo 
-						SET users.firstname='$f_name', users.lastname='$l_name', personalInfo.gender='$gender', personalInfo.birthday='$b_day',
-							personalInfo.birthmonth='$b_month', personalInfo.birthyear='$b_year', personalInfo.city='$city', personalInfo.state='$state',
-							personalInfo.aboutme='$about' 
-						WHERE users.username='$myusername' AND personalInfo.username='$myusername'";
-
-
-			$stmt = mysqli_prepare($dbc, $query);
-
-			mysqli_stmt_bind_param($stmt, "sssiiisss", $f_name, $l_name, $gender, $b_day, $b_month, $b_year, $city, $state, $about);
-
-			mysqli_stmt_execute($stmt);
-
-			$affected_rows = mysqli_stmt_affected_rows($stmt);
-
-			if($affected_rows == 1) {
-				echo 'Profile Updated';
-				mysqli_stmt_close($stmt);
-				mysqli_close($dbc);
-			} else {
-				echo 'Error Occured<br />';
-				echo mysqli_error();
-				mysqli_stmt_close($stmt);
-				mysqli_close($dbc);
-			}
+	    if(isset($_POST['submit'])) {
 			
-//		} 
+			global $dbh; 
+
+			$query = $dbh->prepare("UPDATE personalInfo SET first_name = :firstname, last_name = :lastname, gender = :gender, birthday = :birthday, birthmonth = :birthmonth, birthyear = :birthyear, city = :city, state = :state, aboutme = :aboutme WHERE userID = :user_id");
+			$query->bindParam(':firstname', $_POST['first_name']);
+			$query->bindParam(':lastname', $_POST['last_name']);
+			$query->bindParam(':gender', $_POST['gender']);
+			$query->bindParam(':birthday', $_POST['birthday'], PDO::PARAM_INT);
+			$query->bindParam(':birthmonth', $_POST['birthmonth'], PDO::PARAM_INT);
+			$query->bindParam(':birthyear', $_POST['birthyear'], PDO::PARAM_INT);
+			$query->bindParam(':city', $_POST['city']);
+			$query->bindParam(':state', $_POST['state']);
+			$query->bindParam('aboutme', $_POST['aboutme']);
+			$query->bindParam('user_id', $user_id); 
+
+			$query->execute();
+
+			$dbh = null;
+
+			header('Location: ../profilepage.php');
+		}	
+
+	}
+
 ?>
