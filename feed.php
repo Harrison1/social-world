@@ -19,29 +19,27 @@
 		if (isset($_FILES['post_image'])===true) {
 			//if image is not empty 
 			 if (empty($_FILES['post_image']['name']) ===true) {
-				if(!empty($status)===true){
+				if(!empty($status)===true) {
 					$send->add_post($user_id,$status);
-				}
-			 	 }else {
-			 	 //checking image format                                                                                                       
-				 $allowed = array('jpg','jpeg','gif','png'); 
-				 $file_name = $_FILES['post_image']['name']; 
-				 $file_extn = strtolower(end(explode('.', $file_name)));
-				 $file_temp = $_FILES['post_image']['tmp_name'];
+				 }
+			 }	else {
+				 	 //checking image format                                                                                                       
+					 $allowed = array('jpg','jpeg','gif','png'); 
+					 $file_name = $_FILES['post_image']['name']; 
+					 $file_extn = strtolower(end(explode('.', $file_name)));
+					 $file_temp = $_FILES['post_image']['tmp_name'];
 				 
 				 if (in_array($file_extn, $allowed)===true) {
 				 	$file_parh = 'images/posts/' . substr(md5(time()), 0, 10).'.'.$file_extn;
-				   move_uploaded_file($file_temp, $file_parh);
-				   $send->add_post($user_id,$status,$file_parh);
+				   	move_uploaded_file($file_temp, $file_parh);
+				   	$send->add_post($user_id,$status,$file_parh);
 
-				 }else{
-				  echo 'incorrect File only Allowed with less then 1mb ';
-				  echo implode(', ', $allowed);
+				 }	else{
+				  		echo 'incorrect File only Allowed with less then 1mb ';
+				  		echo implode(', ', $allowed);
 				 }
 			 }
-			
 		}
-
 	}
 ?>
 
@@ -51,8 +49,8 @@
 		<?php include('headincludefiles.html'); ?>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 
-	  <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	</head>
 
@@ -131,7 +129,7 @@
 													</div>
 												</div>
 											</div>
-											<br> ';	
+										<br> ';	
 									}	
 								?>	
 						</div>
