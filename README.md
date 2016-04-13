@@ -13,8 +13,11 @@ Under the file /connectdb/connect.php,, fill out your database information.
 
 ##Me
 [webpage](http://harrisonmcguire.com/)
+
 [several levels](http://severallevels.io/)
+
 [youtube](https://www.youtube.com/channel/UC3QmKYux59jdGJWgMopzWTw)
+
 [twitch](https://www.twitch.tv/harrisonmcguire)
 
 ##Profile Page
