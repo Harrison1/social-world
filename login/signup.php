@@ -11,7 +11,6 @@
 		if(empty($email) || empty($password) || empty($rpassword) || !($password==$rpassword)) {
 				echo "<div class='error'>Try again</div>";
 			} else {
-				//$password = md5($password);
 	  			$check->add_user($email,$password);
 	  			$check->signup($email,$password);
 			}
