@@ -9,7 +9,6 @@
 		if(empty($username) or empty($password)) {
 			echo "<div class='error'>Enter a Username and Password</div>";
 		} else {
-			//$password = md5($password);
   			$check->login($username,$password);
 		}
 	}

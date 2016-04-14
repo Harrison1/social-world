@@ -3,36 +3,35 @@
 		//login function 
 		public function login($username,$password){
 			global $dbh;
-	 		$query = $dbh->prepare("SELECT * from users WHERE username = ? and password = ?");
+	 		$query = $dbh->prepare("SELECT * from users WHERE username = ?");
 			$query->bindValue(1,$username);
-			$query->bindValue(2,$password);
+			//$query->bindValue(2,$password);
 			$query->execute();
 		    $rows = $query->fetch(PDO::FETCH_NUM);
 
-				if($rows > 0){
-					$_SESSION['user_id'] = $rows[0];
-					header('Location: ../feed.php');
-					exit();			
-				 }else{
-					  header('Location: loginpage.php');			
-			        }
+			if(password_verify($password, $rows[3])) {
+				$_SESSION['user_id'] = $rows[0];
+				header('Location: ../feed.php');
+				exit();			
+			} else {
+				  header('Location: loginpage.php');			
+		    }
 		}
 
-		public function signup($username,$password){
+		public function signup($username,$password) {
 			global $dbh;
-	 		$query = $dbh->prepare("SELECT * from users WHERE username = ? and password = ?");
+	 		$query = $dbh->prepare("SELECT * from users WHERE username = ?");
 			$query->bindValue(1,$username);
-			$query->bindValue(2,$password);
 			$query->execute();
 		    $rows = $query->fetch(PDO::FETCH_NUM);
 
-				if($rows > 0){
-					$_SESSION['user_id'] = $rows[0];
-					header('Location: ../profilepage.php');
-					exit();			
-				 }else{
-					  header('Location: loginpage.php');			
-			        }
+			if(password_verify($password, $rows[3])) {
+				$_SESSION['user_id'] = $rows[0];
+				header('Location: ../profilepage.php');
+				exit();			
+			} else {
+				header('Location: loginpage.php');			
+		    }
 		}
 		
 		//check user is logged in or not 
@@ -63,10 +62,11 @@
 		//add new user
 		public function add_user($email,$password){
 			global $dbh; 
+			$hash = password_hash($password, PASSWORD_DEFAULT);
 			$query = $dbh->prepare("INSERT INTO users (userID, email, username, password) VALUES (NULL, ?, ?, ?)");
 			$query->bindValue(1,$email);
 			$query->bindValue(2,$email);
-			$query->bindValue(3,$password);
+			$query->bindValue(3,$hash);
 			$query->execute();
 
     		$last_id = $dbh->lastInsertId();
